@@ -10,6 +10,7 @@
             "Wensh\\Tools\\": "src/"
         }
     },
+    "license": "MIT",
     "authors": [
         {
             "name": "wenshuai",
