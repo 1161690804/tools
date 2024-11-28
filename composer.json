@@ -1,0 +1,20 @@
+{
+    "name": "wenshuai/tools",
+    "type": "library",
+    "require": {
+        "php": ">=7.3",
+      "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wensh\\Tools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wenshuai",
+            "email": "wwshuai_5@163.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
