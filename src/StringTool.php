@@ -1,5 +1,5 @@
 <?php
-namespace zoe\tools;
+namespace wenshuai\tools;
 
 class StringTool
 {
@@ -9,7 +9,7 @@ class StringTool
      * @param $length
      * @param $includeLowercase
      * @return string
-     * @author zoe 2026/2/13 15:25
+     * @author wenshuai 2026/2/13 15:25
      */
     public static function generateCode($length = 4, $includeLowercase = false): string
     {

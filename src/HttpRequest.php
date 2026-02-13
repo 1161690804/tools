@@ -1,5 +1,5 @@
 <?php
-namespace zoe\tools;
+namespace wenshuai\tools;
 class HttpRequest
 {
 
