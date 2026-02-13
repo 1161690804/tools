@@ -1,6 +1,7 @@
 {
     "name": "wenshuai/tools",
     "type": "library",
+    "license": "v1.0.0",
     "autoload": {
         "psr-4": {
             "Wenshuai\\Tools\\": "src/"
