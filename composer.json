@@ -1,0 +1,16 @@
+{
+    "name": "zoe/tools",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Zoe\\Tools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zoe",
+            "email": "wwshuai_5@163.com"
+        }
+    ],
+    "require": {}
+}
