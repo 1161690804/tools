@@ -1,11 +1,11 @@
-## zoe/tools
+## wenshuai/tools
 
 一个简单实用的 PHP 工具库，目前提供：
 
 - **`StringTool`**: 生成随机验证码 / 随机字符串（支持大写、小写、长度、自定义数量等）
 - **`HttpRequest`**: 封装的 GET / POST 请求（支持自定义 Header、超时时间、状态码校验）
 
-> 代码命名空间为 `zoe\tools`，Composer 自动加载前缀为 `Zoe\Tools\`，请按你项目中实际使用的命名空间来 `use`。
+> 代码命名空间为 `wenshuai\tools`，Composer 自动加载前缀为 `Wenshuai\Tools\`，请按你项目中实际使用的命名空间来 `use`。
 
 ---
 
@@ -14,7 +14,7 @@
 - **通过 Composer 安装**
 
 ```bash
-composer require zoe/tools
+composer require wenshuai/tools
 ```
 
 如果是本地开发包/私有仓库，请在你项目的 `composer.json` 中配置仓库源，然后再执行 `composer require`。
@@ -29,7 +29,7 @@ composer require zoe/tools
 {
   "autoload": {
     "psr-4": {
-      "Zoe\\Tools\\": "src/"
+      "Wenshuai\\Tools\\": "src/"
     }
   }
 }
@@ -44,8 +44,8 @@ require __DIR__ . '/vendor/autoload.php';
 然后即可使用工具类（根据你实际使用的命名空间调整）：
 
 ```php
-use zoe\tools\StringTool;
-use zoe\tools\HttpRequest;
+use wenshuai\tools\StringTool;
+use wenshuai\tools\HttpRequest;
 ```
 
 ---
@@ -55,7 +55,7 @@ use zoe\tools\HttpRequest;
 - **生成单个随机字符串**
 
 ```php
-use zoe\tools\StringTool;
+use wenshuai\tools\StringTool;
 
 // 生成 4 位，仅数字 + 大写字母
 $code = StringTool::generateCode(4);
@@ -72,7 +72,7 @@ $codeWithLower = StringTool::generateCode(6, true);
 - **生成多个不重复随机字符串**
 
 ```php
-use zoe\tools\StringTool;
+use wenshuai\tools\StringTool;
 
 // 生成 10 个不重复的 6 位随机码，包含大小写
 $codes = StringTool::generateMultipleCodes(10, 6, true);
@@ -101,7 +101,7 @@ foreach ($codes as $item) {
 - **GET 请求**
 
 ```php
-use zoe\tools\HttpRequest;
+use wenshuai\tools\HttpRequest;
 
 $url = 'https://api.example.com/user';
 $params = [
@@ -116,7 +116,7 @@ echo $response;
 - **POST 请求**
 
 ```php
-use zoe\tools\HttpRequest;
+use wenshuai\tools\HttpRequest;
 
 $url = 'https://api.example.com/login';
 $data = [
@@ -132,7 +132,7 @@ echo $response;
 - **自定义 Header / 超时时间 / 校验 HTTP 状态码**
 
 ```php
-use zoe\tools\HttpRequest;
+use wenshuai\tools\HttpRequest;
 
 $url = 'https://api.example.com/data';
 $data = ['foo' => 'bar'];

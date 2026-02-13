@@ -1,14 +1,14 @@
 {
-    "name": "zoe/tools",
+    "name": "wenshuai/tools",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Zoe\\Tools\\": "src/"
+            "Wenshuai\\Tools\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "zoe",
+            "name": "wenshuai",
             "email": "wwshuai_5@163.com"
         }
     ],
