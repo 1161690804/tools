@@ -44,8 +44,8 @@ require __DIR__ . '/vendor/autoload.php';
 然后即可使用工具类（根据你实际使用的命名空间调整）：
 
 ```php
-use wenshuai\tools\StringTool;
-use wenshuai\tools\HttpRequest;
+use Wenshuai\Tools\StringTool;
+use Wenshuai\Tools\HttpRequest;
 ```
 
 ---
@@ -55,7 +55,7 @@ use wenshuai\tools\HttpRequest;
 - **生成单个随机字符串**
 
 ```php
-use wenshuai\tools\StringTool;
+use Wenshuai\Tools\StringTool;
 
 // 生成 4 位，仅数字 + 大写字母
 $code = StringTool::generateCode(4);
@@ -72,7 +72,7 @@ $codeWithLower = StringTool::generateCode(6, true);
 - **生成多个不重复随机字符串**
 
 ```php
-use wenshuai\tools\StringTool;
+use Wenshuai\Tools\StringTool;
 
 // 生成 10 个不重复的 6 位随机码，包含大小写
 $codes = StringTool::generateMultipleCodes(10, 6, true);
@@ -101,7 +101,7 @@ foreach ($codes as $item) {
 - **GET 请求**
 
 ```php
-use wenshuai\tools\HttpRequest;
+use Wenshuai\Tools\HttpRequest;
 
 $url = 'https://api.example.com/user';
 $params = [
@@ -116,7 +116,7 @@ echo $response;
 - **POST 请求**
 
 ```php
-use wenshuai\tools\HttpRequest;
+use Wenshuai\Tools\HttpRequest;
 
 $url = 'https://api.example.com/login';
 $data = [
@@ -132,7 +132,7 @@ echo $response;
 - **自定义 Header / 超时时间 / 校验 HTTP 状态码**
 
 ```php
-use wenshuai\tools\HttpRequest;
+use Wenshuai\Tools\HttpRequest;
 
 $url = 'https://api.example.com/data';
 $data = ['foo' => 'bar'];

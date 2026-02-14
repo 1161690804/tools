@@ -1,5 +1,5 @@
 <?php
-namespace wenshuai\tools;
+namespace Wenshuai\Tools;
 
 class StringTool
 {
