@@ -6,12 +6,12 @@ class StringTool
 
     /**
      * Notes: 生成单个随机数
-     * @param $length
-     * @param $includeLowercase
+     * @param int $length
+     * @param bool $includeLowercase
      * @return string
      * @author wenshuai 2026/2/13 15:25
      */
-    public static function generateCode($length = 4, $includeLowercase = false): string
+    public static function generateCode(int $length = 4, bool $includeLowercase = false): string
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         if ($includeLowercase) {
@@ -37,7 +37,7 @@ class StringTool
      * @param bool $includeLowercase 是否包含小写字母
      * @return array
      */
-    public static function generateMultipleCodes($count, $length = 4, $includeLowercase = false): array
+    public static function generateMultipleCodes(int $count, int $length = 4, bool $includeLowercase = false): array
     {
         $codes = [];
         $maxAttempts = $count * 100; // 最大尝试次数防止无限循环
