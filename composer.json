@@ -1,6 +1,7 @@
 {
     "name": "wenshuai/tools",
     "type": "library",
+    "license": "Apache-2.0- Apache",
     "autoload": {
         "psr-4": {
             "Wenshuai\\Tools\\": "src/"
