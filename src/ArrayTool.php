@@ -6,7 +6,7 @@ class ArrayTool
     /**
      * 确保输入转换为数组
      */
-    function ensureArray($value, string $delimiter = ','): array
+    public static function ensureArray($value, string $delimiter = ','): array
     {
         if(empty($value)) {
             return [];
