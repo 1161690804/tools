@@ -4,7 +4,15 @@ namespace Wenshuai\Tools;
 class AmountTool
 {
 
-    public static function calculateDiscountPercentage(string $guideAmount, string $payAmount, $multiplier = 10 ): string
+    /**
+     * Notes: 计算折扣
+     * @param string $guideAmount  指导价
+     * @param string $payAmount    销售价
+     * @param int $multiplier      返回格式
+     * @return string
+     * @author wenshuai 2026/4/7 10:32
+     */
+    public static function calculateDiscountPercentage(string $guideAmount, string $payAmount, int $multiplier = 10 ): string
     {
         $multiplierConfig = [
             1 => 2,
@@ -26,5 +34,64 @@ class AmountTool
 
         return bcmul($return, $multiplier, $multiplierConfig[$multiplier]);
     }
+
+    /**
+     * Notes: 计算毛利率
+     * 毛利率 = (销售收入 - 销售成本) / 销售收入 * 100%
+     *
+     * @param string $salesRevenue 销售收入
+     * @param string $costOfSales 销售成本
+     * @param int $scale 保留小数位数
+     * @return array|string
+     * @author wenshuai 2026/4/7
+     */
+    public static function calculateGrossProfitRate(string $salesRevenue, string $costOfSales, int $scale = 2)
+    {
+        $zero = '0';
+
+        // 1. 销售收入为0，无法计算毛利率
+        if (bccomp($salesRevenue, $zero, 4) === 0) {
+            return '0%';
+        }
+
+        // 2. 计算毛利额
+        $grossProfit = bcsub($salesRevenue, $costOfSales, 8);
+
+        // 3. 计算毛利率：(毛利额 / 销售收入) * 100
+        $rate = bcmul(
+            bcdiv($grossProfit, $salesRevenue, 8),  // 保留8位小数确保精度
+            '100',
+            $scale
+        );
+
+        return [
+            'gross_profit' => $grossProfit,
+            'rate' => $rate . '%',
+        ];
+    }
+
+    /**
+     * Notes: 标准化数字字符串
+     * @param string $number
+     * @return string
+     */
+    private static function normalizeNumber(string $number): string
+    {
+        // 移除千分位分隔符
+        $number = str_replace(',', '', $number);
+
+        // 去除前后空格
+        $number = trim($number);
+
+        // 确保是有效的数字
+        if (!is_numeric($number)) {
+            return '0';
+        }
+
+        return $number;
+    }
+
+
+
 
 }
