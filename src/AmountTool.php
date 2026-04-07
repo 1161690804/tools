@@ -4,11 +4,6 @@ namespace Wenshuai\Tools;
 class AmountTool
 {
 
-    public function index()
-    {
-        echo 1;exit;
-    }
-
     public static function calculateDiscountPercentage(string $guideAmount, string $payAmount, $multiplier = 10 ): string
     {
         $multiplierConfig = [
