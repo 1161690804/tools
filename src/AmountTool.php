@@ -48,26 +48,27 @@ class AmountTool
     public static function calculateGrossProfitRate(string $salesRevenue, string $costOfSales, int $scale = 2)
     {
         $zero = '0';
+        $return = [
+            'gross_profit' => '0.00',
+            'rate' => '0.00%',
+        ];
 
         // 1. 销售收入为0，无法计算毛利率
         if (bccomp($salesRevenue, $zero, 4) === 0) {
-            return ['0.00', '0%'];
+            return $return;
         }
 
         // 2. 计算毛利额
-        $grossProfit = bcsub($salesRevenue, $costOfSales, 2);
+        $return['gross_profit'] = $grossProfit = bcsub($salesRevenue, $costOfSales, 2);
 
         // 3. 计算毛利率：(毛利额 / 销售收入) * 100
-        $rate = bcmul(
+        $return['rate'] = bcmul(
             bcdiv($grossProfit, $salesRevenue, 8),  // 保留8位小数确保精度
             '100',
             $scale
         );
 
-        return [
-            'gross_profit' => $grossProfit,
-            'rate' => $rate . '%',
-        ];
+        return $return;
     }
 
     /**
