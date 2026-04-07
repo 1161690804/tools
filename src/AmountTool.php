@@ -55,7 +55,7 @@ class AmountTool
         }
 
         // 2. 计算毛利额
-        $grossProfit = bcsub($salesRevenue, $costOfSales, 8);
+        $grossProfit = bcsub($salesRevenue, $costOfSales, 2);
 
         // 3. 计算毛利率：(毛利额 / 销售收入) * 100
         $rate = bcmul(
