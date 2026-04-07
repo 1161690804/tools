@@ -13,5 +13,7 @@
             "email": "wwshuai_5@163.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-bcmath": "*"
+    }
 }
