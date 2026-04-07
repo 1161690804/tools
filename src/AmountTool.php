@@ -66,7 +66,7 @@ class AmountTool
             bcdiv($grossProfit, $salesRevenue, 8),  // 保留8位小数确保精度
             '100',
             $scale
-        );
+        ). '%';
 
         return $return;
     }
