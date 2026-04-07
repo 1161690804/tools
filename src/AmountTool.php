@@ -51,7 +51,7 @@ class AmountTool
 
         // 1. 销售收入为0，无法计算毛利率
         if (bccomp($salesRevenue, $zero, 4) === 0) {
-            return '0%';
+            return ['0.00', '0%'];
         }
 
         // 2. 计算毛利额
