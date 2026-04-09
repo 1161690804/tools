@@ -12,7 +12,7 @@ class AmountTool
      * @return string
      * @author wenshuai 2026/4/7 10:32
      */
-    public static function calculateDiscountPercentage(string $guideAmount, string $payAmount, int $multiplier = 10 ): string
+    public static function calculateDiscount(string $guideAmount, string $payAmount, int $multiplier = 10 ): string
     {
         $multiplierConfig = [
             1 => 2,
@@ -33,6 +33,31 @@ class AmountTool
         }
 
         return bcmul($return, $multiplier, $multiplierConfig[$multiplier]);
+    }
+
+    /**
+     * Notes: 计算折扣百分比
+     * @param string $guideAmount  指导价
+     * @param string $payAmount    销售价
+     * @return string
+     * @author wenshuai 2026/4/7 10:32
+     */
+    public static function calculateDiscountPercentage(string $guideAmount, string $payAmount): string
+    {
+        // 原价为0, 无论售价多少，都视为1折
+        if(bccomp($guideAmount, '0', 2) == 0) {
+            $return =  '100';
+        }elseif (bccomp($payAmount, '0', 2) === 0) {
+            // 支付金额为0，0折
+            $return = '0';
+        } elseif (bccomp($payAmount, $guideAmount, 2) >= 0) {
+            // 支付金额大于指导价、不打折计算
+            $return = '100';
+        } else {
+            $return = bcdiv($payAmount, $guideAmount, 4);
+        }
+
+        return bcmul($return, 100,2). '%';
     }
 
     /**
