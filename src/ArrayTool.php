@@ -8,19 +8,24 @@ class ArrayTool
      */
     public static function ensureArray($value, string $delimiter = ','): array
     {
-        if(empty($value)) {
+        if (empty($value)) {
             return [];
         }
 
-        if(is_array($value)) {
-            return $value;
+        if (is_array($value)) {
+            $arr = $value;
+        } elseif (is_string($value) && $delimiter !== '' && strpos($value, $delimiter) !== false) {
+            $arr = explode($delimiter, $value);
+        } else {
+            $arr = [$value];
         }
 
-        if (is_string($value) && $delimiter !== '' && strpos($value, $delimiter) !== false) {
-            return explode($delimiter, $value);
-        }
-
-        return [$value];
+        // 过滤空字符串、纯空格
+        $arr = array_filter($arr, static function ($val) {
+            return trim((string)$val) !== '';
+        });
+        // 去重并重设连续下标
+        return array_values(array_unique($arr));
     }
 
     /**
