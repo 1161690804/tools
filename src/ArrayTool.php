@@ -49,4 +49,20 @@ class ArrayTool
         // 去重，重置连续索引
         return array_values(array_unique($values));
     }
+
+    /**
+     * 解析逗号分隔ID字符串，返回去重、过滤0的整型ID数组
+     * 兼容null、空字符串、重复ID、非数字脏数据
+     * @param string|null $idStr 逗号拼接ID字符串
+     * @return int[]
+     */
+    public static function parseCommaIdStrToUniqueIntArray(string $idStr = ''): array
+    {
+        $arr = explode(',', $idStr);
+        $intArr = array_map('intval', $arr);
+        $filterArr = array_filter($intArr);
+        $uniqueArr = array_unique($filterArr);
+        return array_values($uniqueArr);
+    }
+
 }
