@@ -34,7 +34,7 @@ class ArrayTool
      * @param string $field 待提取字段名
      * @return array
      */
-    public static function extractDistinctColumn(array $data, string $field): array
+    public static function uniqueFieldValues(array $data, string $field): array
     {
         // 字段不存在返回null，不参与后续统计
         $values = array_map(static function ($row) use ($field) {
@@ -56,7 +56,7 @@ class ArrayTool
      * @param string|null $idStr 逗号拼接ID字符串
      * @return int[]
      */
-    public static function parseCommaIdStrToUniqueIntArray(string $idStr = ''): array
+    public static function uniqueIdsFromCommaStr(string $idStr = ''): array
     {
         $arr = explode(',', $idStr);
         $intArr = array_map('intval', $arr);
