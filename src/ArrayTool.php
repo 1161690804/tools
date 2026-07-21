@@ -65,4 +65,55 @@ class ArrayTool
         return array_values($uniqueArr);
     }
 
+    /**
+     * 按指定字段拼接下划线复合键重新索引数组
+     * @param array $orig 源二维数组
+     * @param string|array $columns 拼接key的字段（仅单层，不支持回调）
+     * @param bool $isArray true=同key聚合数组 false=覆盖单条
+     * @param string|null|callable $valueRule
+     *      null：整条记录作为value；
+     *      字符串：取该行对应字段作为value；
+     *      回调函数：自定义返回value，参数($record)
+     * @return array
+     */
+    public static function reindexArray(array $orig, $columns, bool $isArray = false, $valueRule = null): array
+    {
+        $result = [];
+        if (empty($orig)) {
+            return $result;
+        }
+
+        $columns = is_array($columns) ? $columns : [$columns];
+
+        foreach ($orig as $record) {
+            // 生成复合key，沿用你原始逻辑，无回调
+            $key = '';
+            foreach ($columns as $col) {
+                $val = $record[$col] ?? '0';
+                $key .= $val . '_';
+            }
+            $key = rtrim($key, '_');
+
+            // 处理value
+            if (is_callable($valueRule)) {
+                // 回调：自由加工value，适配你goods_id=>[group_id]场景
+                $itemValue = $valueRule($record);
+            } elseif (is_string($valueRule)) {
+                // 传字段名，直接取字段值
+                $itemValue = $record[$valueRule] ?? null;
+            } else {
+                // 默认：整条行数据
+                $itemValue = $record;
+            }
+
+            if ($isArray) {
+                $result[$key][] = $itemValue;
+            } else {
+                $result[$key] = $itemValue;
+            }
+        }
+
+        return $result;
+    }
+
 }
